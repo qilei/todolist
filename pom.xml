@@ -7,14 +7,22 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>todolist Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	
+    <pluginRepositories>
+        <pluginRepository>
+            <id>c5-public-repository</id>
+            <name>Carbon 5 repository</name>
+            <url>http://mvn.carbonfive.com/public</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 	<properties>
+		<!-- dependency version -->
 		<spring.version>3.1.0.RELEASE</spring.version>
 		<hibernate.version>3.6.8.Final</hibernate.version>
 		<selenium.server.browser>firefox</selenium.server.browser>
 		<selenium.server.browser.version>7</selenium.server.browser.version>
 		<jetty.version>7.6.8.v20121106</jetty.version>
-		
 		
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -22,7 +30,9 @@
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
         <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
         <test.jdbc.driverClassName>com.mysql.jdbc.Driver</test.jdbc.driverClassName>
+		<test.jdbc.url>jdbc:mysql://localhost:3306/todolist-test</test.jdbc.url>
         <test.jdbc.username>todolist</test.jdbc.username>
+		<test.jdbc.password>todolist</test.jdbc.password>
         <test.hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</test.hibernate.dialect>
         <test.log.dir>${project.build.directory}/logs</test.log.dir>
         <test.log.file>test.log</test.log.file>
@@ -231,6 +241,24 @@
 					</execution>
 				</executions>
 			</plugin>
+            <plugin>
+                <groupId>com.carbonfive.db-support</groupId>
+                <artifactId>db-migration-maven-plugin</artifactId>
+                <version>0.9.9-m2</version>
+                <configuration>
+                    <url>${jdbc.url}</url>
+                    <username>${jdbc.username}</username>
+                    <password>${jdbc.password}</password>
+                    <migrationsPath>src/main/resources/db/migrations</migrationsPath>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.18</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
 		</plugins>
 	</build>
 
@@ -245,20 +273,17 @@
 				</property>
 			</activation>
 			<properties>
-				<server.port>8080</server.port>
+				<application.host>localhost</application.host>
+				<application.port>8080</application.port>
 				<context.path>/todolist</context.path>
-				<log.to>file</log.to>
-				<log.dir>${project.build.directory}/logs</log.dir>
-				<log.file>development.log</log.file>
 				<jdbc.url>jdbc:mysql://localhost:3306/todolist-dev</jdbc.url>
 				<jdbc.username>todolist</jdbc.username>
 				<jdbc.password>todolist</jdbc.password>
-				<application.host>localhost</application.host>
-				<application.port>8080</application.port>
-				<test.jdbc.url>jdbc:mysql://localhost:3306/todolist-test</test.jdbc.url>
-				<test.jdbc.password>todolist</test.jdbc.password>
 				<browser.lifecycle>lasting</browser.lifecycle>
 				<selenium.server.url>http://localhost:4444/wd/hub</selenium.server.url>
+				<log.to>file</log.to>
+				<log.dir>${project.build.directory}/logs</log.dir>
+				<log.file>development.log</log.file>
 			</properties>
 		</profile>
 		<profile>
@@ -270,22 +295,17 @@
 				</property>
 			</activation>
 			<properties>
-				<server.port>8081</server.port>
+				<application.host>localhost</application.host>
+				<application.port>8081</application.port>
 				<context.path>/todolist</context.path>
+				<jdbc.url>jdbc:mysql://localhost:3306/todolist-test</jdbc.url>
+				<jdbc.username>todolist</jdbc.username>
+				<jdbc.password>todolist</jdbc.password>
+				<browser.lifecycle>lasting</browser.lifecycle>
+				<selenium.server.url>http://localhost:4444/wd/hub</selenium.server.url>
 				<log.to>file</log.to>
 				<log.dir>${project.build.directory}/logs</log.dir>
 				<log.file>test.log</log.file>
-				<jdbc.url>jdbc:mysql://localhost:3306/todolist-test</jdbc.url>
-				<jdbc.username>testbot</jdbc.username>
-				<jdbc.password>todolist</jdbc.password>
-				<timeServer.host>localhost</timeServer.host>
-				<timeServer.port>11111</timeServer.port>
-				<application.host>localhost</application.host>
-				<application.port>8081</application.port>
-				<test.jdbc.url>jdbc:mysql://localhost:3306/todolist-test</test.jdbc.url>
-				<test.jdbc.password>todolist</test.jdbc.password>
-				<browser.lifecycle>lasting</browser.lifecycle>
-				<selenium.server.url>http://localhost:4444/wd/hub</selenium.server.url>
 			</properties>
 		</profile>
 	</profiles>

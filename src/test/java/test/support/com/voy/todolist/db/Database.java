@@ -22,7 +22,7 @@ public class Database {
     public static Database connect(SessionFactory sessionFactory) {
         return new Database(sessionFactory.openSession());
     }
-
+    
     private Session session;
 
     public Database(Session session) {
