@@ -214,6 +214,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.5</version>
 				<configuration>
+					<skipTests>${skip.unit.tests}</skipTests>
 					<includes>
 						<include>**/*Test.java</include>
 					</includes>
@@ -228,6 +229,7 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.5</version>
 				<configuration>
+					<skipTests>${skip.integration.tests}</skipTests>
 					<includes>
 						<include>**/*Feature.java</include>
 					</includes>
@@ -295,6 +297,32 @@
 				</property>
 			</activation>
 			<properties>
+			    <skip.integration.tests>true</skip.integration.tests>
+			    <skip.unit.tests>false</skip.unit.tests>
+				<application.host>localhost</application.host>
+				<application.port>8081</application.port>
+				<context.path>/todolist</context.path>
+				<jdbc.url>jdbc:mysql://localhost:3306/todolist-test</jdbc.url>
+				<jdbc.username>todolist</jdbc.username>
+				<jdbc.password>todolist</jdbc.password>
+				<browser.lifecycle>lasting</browser.lifecycle>
+				<selenium.server.url>http://localhost:4444/wd/hub</selenium.server.url>
+				<log.to>file</log.to>
+				<log.dir>${project.build.directory}/logs</log.dir>
+				<log.file>test.log</log.file>
+			</properties>
+		</profile>
+		<profile>
+			<id>env-test-system</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>test</value>
+				</property>
+			</activation>
+			<properties>
+			    <skip.integration.tests>false</skip.integration.tests>
+			    <skip.unit.tests>true</skip.unit.tests>
 				<application.host>localhost</application.host>
 				<application.port>8081</application.port>
 				<context.path>/todolist</context.path>

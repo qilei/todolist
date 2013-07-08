@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.testinfected.hamcrest.jpa.Reflection;
 
+import test.support.com.voy.todolist.TestEnvironment;
 import test.support.com.voy.todolist.builders.Builder;
 
 import javax.persistence.Id;

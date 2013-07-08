@@ -2,6 +2,7 @@ package test.support.com.voy.todolist.web;
 
 import org.openqa.selenium.WebDriver;
 
+import test.support.com.voy.todolist.TestEnvironment;
 import test.support.com.voy.todolist.web.page.HomePage;
 
 public class ApplicationDriver {
@@ -16,17 +17,22 @@ public class ApplicationDriver {
     }
 
     public void start() throws Exception {
-//        startWebServer();
+        cleanupEnvironment();
+        startWebServer();
         startBrowser();
         makeDrivers();
     }
 
-    private void startWebServer() {
+    private void cleanupEnvironment() {
+    	environment.wipe();
+	}
+
+	private void startWebServer() {
         environment.startServer();
     }
 
     private void startBrowser() throws Exception {
-        this.browser = environment.launchBrowser();
+    	this.browser=environment.launchBrowser();
     }
 
     private void makeDrivers() {

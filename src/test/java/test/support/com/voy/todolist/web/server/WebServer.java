@@ -34,9 +34,9 @@ public class WebServer {
         this.contextPath = contextPath;
         this.webAppPath = webAppPath;
 
-//        configureThreadPool();
+        configureThreadPool();
         configureConnector();
-//        bindDefaultHandler();
+        bindDefaultHandler();
         configureApplication();
         configureExtraOptions();
     }

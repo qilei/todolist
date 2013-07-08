@@ -4,8 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import test.support.com.voy.todolist.TestEnvironment;
 import test.support.com.voy.todolist.web.ApplicationDriver;
-import test.support.com.voy.todolist.web.TestEnvironment;
 
 public class AppFeature {
 	private TestEnvironment environment=TestEnvironment.load();
@@ -24,6 +24,5 @@ public class AppFeature {
 	@After
 	public void stopApp(){
 		appDriver.stop();
-		System.out.println("stop app");
 	}
 }

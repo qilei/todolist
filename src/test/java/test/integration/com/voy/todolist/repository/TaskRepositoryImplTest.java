@@ -10,8 +10,8 @@ import org.junit.Test;
 import com.voy.todolist.domain.Task;
 import com.voy.todolist.repository.TaskRepository;
 
+import test.support.com.voy.todolist.TestEnvironment;
 import test.support.com.voy.todolist.db.Database;
-import test.support.com.voy.todolist.db.TestEnvironment;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;

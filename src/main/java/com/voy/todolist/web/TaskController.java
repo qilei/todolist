@@ -21,8 +21,8 @@ public class TaskController {
 
 	@RequestMapping(value="/")
 	public String index(Model model){
-		List<Task> items=taskService.findAll();
-		model.addAttribute("items", items);
+//		List<Task> items=taskService.findAll();
+//		model.addAttribute("items", items);
 		return "index";
 	}
 
