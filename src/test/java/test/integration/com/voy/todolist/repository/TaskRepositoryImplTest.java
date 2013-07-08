@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.iterableWithSize;
 import static test.support.com.voy.todolist.builders.TaskBuilder.aTask;
 
-public class TaskRepositoryTest {
+public class TaskRepositoryImplTest {
 	TestEnvironment environment=TestEnvironment.load();
 	Database database=Database.in(environment);
 	

@@ -23,7 +23,30 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+        <property name="namingStrategy">
+            <bean class="org.hibernate.cfg.ImprovedNamingStrategy"/>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven/>
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.voy.todolist" />
+
+    <!-- <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="emf"/>
     </bean>
 
@@ -54,6 +77,6 @@
 	<jpa:repositories base-package="com.voy.todolist.repository"
 		entity-manager-factory-ref="emf" transaction-manager-ref="transactionManager" />
 
-	<context:component-scan base-package="com.voy.todolist" />
+	<context:component-scan base-package="com.voy.todolist" /> -->
 	
 </beans>

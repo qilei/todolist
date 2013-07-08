@@ -23,6 +23,8 @@ public class Task {
 	private Integer duration;
 	
 	private String priority;
+	
+	public Task(){}
 
 	public Task(String info, Integer duration, String priority, Date dueDate) {
 		this.info=info;
