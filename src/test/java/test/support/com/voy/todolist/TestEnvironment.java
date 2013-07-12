@@ -15,6 +15,7 @@ import test.support.com.voy.todolist.web.Routing;
 import test.support.com.voy.todolist.web.browser.BrowserControl;
 import test.support.com.voy.todolist.web.browser.LastingBrowser;
 import test.support.com.voy.todolist.web.server.LastingServer;
+import test.support.com.voy.todolist.web.server.LastingTomcatServer;
 import test.support.com.voy.todolist.web.server.ServerLifeCycle;
 
 public class TestEnvironment {
@@ -77,6 +78,8 @@ public class TestEnvironment {
     }
 
 	private ServerLifeCycle selectServer() {
+//		return new LastingTomcatServer(asString(APPLICATION_HOST),asInt(APPLICATION_PORT),asString(CONTEXT_PATH),asString(WEBAPP_PATH));
+		
 		return new LastingServer(asString(APPLICATION_HOST),asInt(APPLICATION_PORT),asString(CONTEXT_PATH),asString(WEBAPP_PATH));
 	}
 

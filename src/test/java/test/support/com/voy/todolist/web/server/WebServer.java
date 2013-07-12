@@ -1,12 +1,7 @@
 package test.support.com.voy.todolist.web.server;
 
-//import org.mortbay.jetty.Connector;
-//import org.mortbay.jetty.Server;
-//import org.mortbay.jetty.handler.DefaultHandler;
-//import org.mortbay.jetty.handler.HandlerList;
-//import org.mortbay.jetty.nio.SelectChannelConnector;
-//import org.mortbay.jetty.webapp.WebAppContext;
-//import org.mortbay.thread.QueuedThreadPool;
+import java.util.List;
+
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.DefaultHandler;
@@ -14,7 +9,10 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.webapp.WebAppContext;
+import org.springframework.util.StringUtils;
 import org.testinfected.hamcrest.ExceptionImposter;
+
+import com.google.common.collect.Lists;
 
 public class WebServer {
 
@@ -40,6 +38,11 @@ public class WebServer {
         configureApplication();
         configureExtraOptions();
     }
+    
+	private void setTldJarNames() {
+		WebAppContext context = (WebAppContext) server.getHandler();
+		context.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",".*/jstl-[^/]*\\.jar$|.*/.*taglibs[^/]*\\.jar$");
+	}
 
     public void start() {
         try {
@@ -81,6 +84,7 @@ public class WebServer {
         WebAppContext appContext = new WebAppContext();
         appContext.setContextPath(contextPath);
         appContext.setWar(webAppPath);
+        appContext.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",".*/jstl-[^/]*\\.jar$|.*/.*taglibs[^/]*\\.jar$");
         server.setHandler(appContext);
     }
 
