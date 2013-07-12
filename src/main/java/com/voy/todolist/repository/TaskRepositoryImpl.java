@@ -21,8 +21,16 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
 	@SuppressWarnings("unchecked")
-	@Transactional(readOnly = true)
 	public List<Task> findAll() {
+		Session session=currentSession();
+		try {
+			session.beginTransaction();
+			List<Task> result= session.createCriteria(Task.class).list();
+			session.getTransaction().commit();
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return currentSession().createCriteria(Task.class).list();
 	}
 

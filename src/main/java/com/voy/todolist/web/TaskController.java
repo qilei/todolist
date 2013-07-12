@@ -8,21 +8,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.voy.todolist.domain.Task;
+import com.voy.todolist.repository.TaskRepository;
 import com.voy.todolist.service.TaskService;
 @Controller
 public class TaskController {
-	private TaskService taskService;
+	private TaskRepository taskRepository;
 
 	@Autowired
-	public TaskController(TaskService taskService) {
+	public TaskController(TaskRepository taskRepository) {
 		super();
-		this.taskService = taskService;
+		this.taskRepository = taskRepository;
 	}
 
 	@RequestMapping(value="/")
 	public String index(Model model){
-//		List<Task> items=taskService.findAll();
-//		model.addAttribute("items", items);
+		List<Task> items=taskRepository.findAll();
+		model.addAttribute("items", items);
 		return "index";
 	}
 

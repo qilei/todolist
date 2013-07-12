@@ -9,8 +9,8 @@
 <h2>page location:WEB-INF/pages/index.jsp</h2>
 <h2>Hello World!</h2>
 
-<%-- <c:forEach items="${items }" var="item">
+<c:forEach items="${items }" var="item">
 ${item.info }<br/>
-</c:forEach> --%>
+</c:forEach>
 </body>
 </html>
