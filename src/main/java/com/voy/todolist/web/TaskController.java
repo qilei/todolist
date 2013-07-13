@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.voy.todolist.domain.Task;
 import com.voy.todolist.repository.TaskRepository;
-import com.voy.todolist.service.TaskService;
 @Controller
 public class TaskController {
 	private TaskRepository taskRepository;
