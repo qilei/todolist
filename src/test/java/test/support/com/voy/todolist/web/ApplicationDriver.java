@@ -55,5 +55,12 @@ public class ApplicationDriver {
 	public void returnHome() {
         homePage.displays();
 	}
+	
+	public void addTask(){
+        homePage.displays();
+		String taskInfo="task item 1";
+		homePage.addTask(taskInfo);
+		homePage.displayTask(taskInfo);
+	}
 
 }

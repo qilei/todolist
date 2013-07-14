@@ -55,27 +55,24 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><input type="checkbox" name="chk" value="" /></td>
-							<td><i class="icon-ok"></i></td>
-							<td>A</td>
-							<td>2h</td>
-							<td>完成新增功能</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" name="chk" value="" /></td>
-							<td><i class="icon-ok"></i></td>
-							<td>A</td>
-							<td>2h</td>
-							<td>完成新增功能</td>
-						</tr>
+						<c:forEach var="item" items="${items }">
+							<tr>
+								<td><input type="checkbox" name="chk" value="" /></td>
+								<td><i class="icon-ok"></i></td>
+								<td>${item.priority }</td>
+								<td>${item.duration }</td>
+								<td>${item.info }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
+				<form action="${ctx }/task/add" method="post">
 				<div class="input-append">
 					<input type="text" id="task" name="task" class="input-xxlarge"
 						placeholder="add task" />
-					<button type="submit" class="btn">Add</button>
+					<button type="submit" id="btnAdd" class="btn">Add</button>
 				</div>
+				</form>
 			</div>
 		</div>
 		<div class="span6"></div>

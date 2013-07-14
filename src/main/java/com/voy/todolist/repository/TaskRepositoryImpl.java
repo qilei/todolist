@@ -13,29 +13,39 @@ import com.voy.todolist.domain.Task;
 @Repository
 public class TaskRepositoryImpl implements TaskRepository {
 
-    private final SessionFactory sessionFactory;
+	private final SessionFactory sessionFactory;
 
-    @Autowired
-    public TaskRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+	@Autowired
+	public TaskRepositoryImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Task> findAll() {
-		Session session=currentSession();
+		List<Task> result=null;
+		Session session = currentSession();
 		try {
 			session.beginTransaction();
-			List<Task> result= session.createCriteria(Task.class).list();
+			result = session.createCriteria(Task.class).list();
 			session.getTransaction().commit();
-			return result;
 		} catch (Exception e) {
-			// TODO: handle exception
+			session.getTransaction().rollback();
 		}
-		return currentSession().createCriteria(Task.class).list();
+		return result;
 	}
 
-    private Session currentSession() {
-        return sessionFactory.getCurrentSession();
-    }
+	public void add(Task task) {
+		Session session = currentSession();
+		try {
+			session.beginTransaction();
+			session.save(task);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		}
+	}
 
+	private Session currentSession() {
+		return sessionFactory.getCurrentSession();
+	}
 }

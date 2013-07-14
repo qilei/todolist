@@ -10,4 +10,6 @@ import com.voy.todolist.domain.Task;
 
 public interface TaskRepository {
 	public List<Task> findAll();
+	
+	public void add(Task task);
 }

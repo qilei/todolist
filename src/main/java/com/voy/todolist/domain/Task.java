@@ -20,13 +20,13 @@ public class Task {
 	@Column(name="due_date")
 	private Date dueDate;
 	
-	private Integer duration;
+	private String duration;
 	
 	private String priority;
 	
 	public Task(){}
 
-	public Task(String info, Integer duration, String priority, Date dueDate) {
+	public Task(String info, String duration, String priority, Date dueDate) {
 		this.info=info;
 		this.duration=duration;
 		this.priority=priority;
@@ -57,11 +57,11 @@ public class Task {
 		this.dueDate = dueDate;
 	}
 
-	public Integer getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Integer duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 

@@ -16,6 +16,11 @@ public class AppFeature {
 		appDriver.returnHome();
 	}
 	
+	@Test
+	public void addTask(){
+		appDriver.addTask();
+	}
+	
 	@Before
 	public void startApp() throws Exception{
 		appDriver.start();

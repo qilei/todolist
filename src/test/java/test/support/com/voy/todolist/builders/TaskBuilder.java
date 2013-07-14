@@ -7,7 +7,7 @@ import com.voy.todolist.domain.Task;
 
 public class TaskBuilder extends AbstractBuilder<TaskBuilder, Task> {
 	private String item ="item text";
-	private Integer duration=60;
+	private String duration="1h";
 	private String priority="B";
 	private Date dueDate=new Date();
 	
