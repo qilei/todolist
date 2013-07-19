@@ -8,11 +8,11 @@ import org.hibernate.SessionFactory;
 import org.openqa.selenium.WebDriver;
 
 import static java.lang.Integer.parseInt;
-
 import test.support.com.voy.todolist.db.Database;
 import test.support.com.voy.todolist.db.Spring;
 import test.support.com.voy.todolist.web.Routing;
 import test.support.com.voy.todolist.web.browser.BrowserControl;
+import test.support.com.voy.todolist.web.browser.ChromeBrowser;
 import test.support.com.voy.todolist.web.browser.LastingBrowser;
 import test.support.com.voy.todolist.web.server.LastingServer;
 import test.support.com.voy.todolist.web.server.LastingTomcatServer;
@@ -85,6 +85,7 @@ public class TestEnvironment {
 
 	private BrowserControl selectBrowser() {
 		return new LastingBrowser();
+		//return new ChromeBrowser();
 	}
 
     public void startServer() {

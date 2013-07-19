@@ -11,10 +11,10 @@ public class AppFeature {
 	private TestEnvironment environment=TestEnvironment.load();
 	private ApplicationDriver appDriver=new ApplicationDriver(environment);
 	
-	@Test
-	public void homePageTitleTest(){
-		appDriver.returnHome();
-	}
+//	@Test
+//	public void homePageTitleTest(){
+//		appDriver.returnHome();
+//	}
 	
 	@Test
 	public void addTask(){

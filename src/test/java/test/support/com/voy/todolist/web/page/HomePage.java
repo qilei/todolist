@@ -18,7 +18,6 @@ public class HomePage extends Page {
 	
 	public void addTask(String taskInfo){
 		browser.findElement(By.id("task")).sendKeys(taskInfo);
-		browser.findElement(By.name("task")).sendKeys(taskInfo);
 		browser.findElement(By.id("btnAdd")).click();
 	}
 	
