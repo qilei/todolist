@@ -28,6 +28,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- default properties -->
+        <server.port>8080</server.port>
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
         <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
         <test.jdbc.driverClassName>com.mysql.jdbc.Driver</test.jdbc.driverClassName>

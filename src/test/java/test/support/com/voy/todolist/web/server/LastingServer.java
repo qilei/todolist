@@ -12,7 +12,7 @@ public class LastingServer implements ServerLifeCycle{
 	}
 
 	public void stop() {
-		server.stop();
+		server.stopOnShutdown();
 	}
 
 }
