@@ -21,6 +21,11 @@ public class AppFeature {
 		appDriver.addTask();
 	}
 	
+	@Test
+	public void addTask_with_duration_and_priority(){
+		//appDriver.addTask();
+	}
+	
 	@Before
 	public void startApp() throws Exception{
 		appDriver.start();

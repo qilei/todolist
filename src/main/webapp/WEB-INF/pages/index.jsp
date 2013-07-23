@@ -55,13 +55,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="item" items="${items }">
-							<tr>
+						<c:forEach var="item" items="${items }" varStatus="status">
+							<tr id="item-${status.index}">
 								<td><input type="checkbox" name="chk" value="" /></td>
 								<td><i class="icon-ok"></i></td>
-								<td>${item.priority }</td>
-								<td>${item.duration }</td>
-								<td>${item.info }</td>
+								<td class="priority">${item.priority }</td>
+								<td class="duration">${item.duration }</td>
+								<td class="info">${item.info }</td>
 							</tr>
 						</c:forEach>
 					</tbody>

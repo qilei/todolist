@@ -31,6 +31,7 @@ public class TaskController {
 	
 	@RequestMapping(value="/task/add",method=RequestMethod.POST)
 	public String add(@RequestParam(value="task") String taskInfo){
+		
 		Task task =new Task();
 		task.setInfo(taskInfo);
 		task.setPriority("B");

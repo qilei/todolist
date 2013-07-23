@@ -22,6 +22,10 @@ public class HomePage extends Page {
 	}
 	
 	public void displayTask(String taskInfo){
-		assertThat(browser.findElement(By.className("table")).getText(),containsString(taskInfo));
+		//assertThat(browser.findElement(By.className("table")).getText(),containsString(taskInfo));
+
+		assertThat(browser.findElement(By.xpath("//*[@id='item-0']/td[5]")).getText(),containsString(taskInfo));
+		
+		//assertThat(browser.findElement(By.cssSelector("#item-0 td.info")).getText(),containsString(taskInfo));
 	}
 }

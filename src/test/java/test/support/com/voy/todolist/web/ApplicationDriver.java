@@ -57,8 +57,14 @@ public class ApplicationDriver {
 	}
 	
 	public void addTask(){
-        homePage.displays();
+//        homePage.displays();
 		String taskInfo="task item 1";
+		homePage.addTask(taskInfo);
+		homePage.displayTask(taskInfo);
+	}
+	
+	public void addComplexTask(){
+		String taskInfo="task item 1 @30 !A";
 		homePage.addTask(taskInfo);
 		homePage.displayTask(taskInfo);
 	}
